@@ -1,0 +1,30 @@
+﻿<Window x:Class="Client_win.Views.Auth"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Client_win.Views"
+        mc:Ignorable="d"
+        Title="Chat" Height="200" Width="200" ResizeMode="CanMinimize">
+    <Grid>
+        <StackPanel Margin="5">
+            <Label Content="Authentification"/>
+            <Label Content="Login:"/>
+            <TextBox x:Name="LoginTextBox" Text="{Binding LoginField}"/>
+            <Label Content="Password:"/>
+            <TextBox x:Name="PasswordTextBox" Text="{Binding PasswordField}">
+                <TextBox.InputBindings>
+                    <KeyBinding Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=PasswordTextBox, Path=Text }" Gesture="Enter"/>
+                </TextBox.InputBindings>
+            </TextBox>
+            <Grid Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Content="LogIn" Command="{Binding LoginCommand}" IsEnabled="{Binding IsEnableLoginButton}" Margin="0,0,5,0"/>
+                <Button Content="Cancel" Grid.Column="1" Margin="5,0,0,0" Height="22" IsCancel="True" VerticalAlignment="Bottom" Click="Button_Click"/>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Window>
